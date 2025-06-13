@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="stylesheet" href="style.css"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="stylesheet" href="style.css" />
     <title>Contact book</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body onload="fetchContacts()">
+    <div id="table">Contacts loading...</div>
+    <button id="refresh" type="button">Refresh</button>
+    <button id="addContact" type="button">Add contact</button>
+
+    <script src="./config.js"></script>
+    <script>
+      function fetchContacts() {
+        fetch(rootPath + "controller/get-contacts/")
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (data) {
+            // displayOutput(data);
+            console.log(data);
+          });
+      }
+    </script>
+  </body>
 </html>
