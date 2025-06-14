@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Contact book</title>
   </head>
   <body>
     <br />
@@ -29,14 +29,14 @@
         document.getElementById("homeLink").addEventListener('click', homeLink);
 
       function submitForm(e) {
-        e.prevetDefault();
+        e.preventDefault();
 
-        const form = new FormData(document.querySelector("#editForm"));
-        form.append("apiKey", apiKey);
+        const form = new FormData(document.querySelector('#editForm'));
+        form.append('apiKey', apiKey);
 
-        fetch(rootPath + "controller/insert-contact/", {
-          method: "POST",
-          headers: { Accept: "application/json,*.*" },
+        fetch(rootPath + 'controller/insert-contact/', {
+          method: 'POST',
+          headers: { Accept: 'application/json,*.*' },
           body: form,
         })
           .then(function (response) {
