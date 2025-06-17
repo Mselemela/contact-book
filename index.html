@@ -3,24 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link type="stylesheet" href="style.css" />
     <title>Contact book</title>
   </head>
-  <body onload="fetchContacts()">
-    <div id="table">Contacts loading...</div>
-    <button id="refresh" type="button">Refresh</button>
-    <button id="addContact" type="button">Add contact</button>
+  <body onload="fetchContacts()" style="margin: 20px">
+    <div
+      style="
+        position: sticky;
+        top: 0px;
+        background-color: rgb(177, 174, 174);
+        z-index: 1000;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        height: 50px;
+      "
+    >
+      <h3 style="margin: 0">Contact List</h3>
+    </div>
+    <div
+      style="
+        position: sticky;
+        top: 70px;
+        background-color: rgb(177, 174, 174);
+        z-index: 1000;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        height: 50px;
+      "
+    >
+      <button id="refresh" type="button">Refresh</button>
+      <button id="addContact" type="button">Add Contact</button>
+    </div>
+    <div id="table" style="background-color: rgb(220, 218, 235)">
+      Contacts loading...
+    </div>
 
     <script src="./config.js"></script>
     <script>
+      // Evant listener for refresh button
       document
         .getElementById("refresh")
         .addEventListener("click", fetchContacts);
 
+      // Evant listener for add contact button
       document
         .getElementById("addContact")
         .addEventListener("click", addContact);
 
+      // Fetch contacts from the server
       function fetchContacts() {
         fetch(rootPath + "controller/get-contacts/")
           .then(function (response) {
@@ -31,17 +64,23 @@
           });
       }
 
+      // Display contacts in a table
       function displayOutput(data) {
-        output = "<table>";
+        output = `
+        <table>
+        `;
 
         for (a in data) {
           output += `
-            <tr onclick="editContact(${data[a].id})">
-              <td>
-                <img src="${rootPath}controller/uploads/${data[a].avatar}" width="40px"/>
+            <tr onclick="editContact(${data[a].id})" >
+             
+              <td style="padding:20px; border-bottom: 2px solid rgb(177, 174, 174" >
+                <img src="${rootPath}controller/uploads/${data[a].avatar}" width="100px"/>
               </td>
-              <td><h5>${data[a].firstname}</h5></td>
-              <td><h5>${data[a].lastname}</h5></td>
+              <td style="padding:20px; border-bottom: 2px solid rgb(177, 174, 174" >
+                <h5>${data[a].firstname}</h5>
+                <h5>${data[a].lastname}</h5>
+              </td>
             </tr>
           `;
         }
@@ -49,10 +88,12 @@
         document.getElementById("table").innerHTML = output;
       }
 
+      //Add contact function
       function addContact() {
         window.open("add-contact.html", "_self");
       }
 
+      //Edit contact function
       function editContact(id) {
         window.open("edit-contact.html?id=" + id, "_self");
       }
