@@ -5,9 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact book</title>
   </head>
-  <body onload="getContact()">
-    <div id="avatarImage"></div>
-    <form id="editForm">
+  <body onload="getContact()" style="background-color: rgb(220, 218, 235) ; margin: 20px">
+    <div
+      style="
+        position: sticky;
+        top: 0px;
+        background-color: rgb(177, 174, 174);
+        z-index: 1000;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        height: 50px;
+        margin-bottom: 20px;
+      "
+    >
+      <h3 style="margin: 0">Contact Book</h3>
+    </div>
+    <div id="avatarImage" ></div>
+    <form id="editForm" >
       <label for="firstname">First name</label>
       <input type="text" id="firstname" name="firstname" readonly /><br />
       <label for="lastname">Last name</label>

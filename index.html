@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact book</title>
   </head>
-  <body onload="fetchContacts()" style="margin: 20px">
+  <body onload="fetchContacts()" style="background-color: rgb(220, 218, 235) ; margin: 20px">
     <div
       style="
         position: sticky;
@@ -17,9 +17,10 @@
         align-items: center;
         gap: 10px;
         height: 50px;
+         margin-bottom: -4px;
       "
     >
-      <h3 style="margin: 0">Contact List</h3>
+      <h3 style="margin: 0">Contact Book</h3>
     </div>
     <div
       style="
@@ -37,7 +38,7 @@
       <button id="refresh" type="button">Refresh</button>
       <button id="addContact" type="button">Add Contact</button>
     </div>
-    <div id="table" style="background-color: rgb(220, 218, 235)">
+    <div id="table">
       Contacts loading...
     </div>
 
